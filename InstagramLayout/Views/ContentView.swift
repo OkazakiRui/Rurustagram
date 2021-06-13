@@ -15,12 +15,13 @@ struct ContentView: View {
         case Shop
         case Mypage
     }
+    @State private var select: Tab = .Home
     
     var body: some View {
-        TabView {
+        TabView(selection: $select) {
             Home()
                 .tabItem {
-                    IconView(systemName: "house")
+                    IconView(systemName: select == .Home ? "house.fill" : "house")
                 }
                 .tag(Tab.Home)
             
@@ -32,19 +33,19 @@ struct ContentView: View {
             
             IconView(systemName: "film")
                 .tabItem {
-                    IconView(systemName: "film")
+                    IconView(systemName: select == .Reels ? "film.fill" : "film" )
                 }
                 .tag(Tab.Reels)
             
             IconView(systemName: "bag")
                 .tabItem {
-                    IconView(systemName: "bag")
+                    IconView(systemName: select == .Shop ? "bag.fill" : "bag")
                 }
                 .tag(Tab.Shop)
             
             IconView(systemName: "person")
                 .tabItem {
-                    IconView(systemName: "person")
+                    IconView(systemName: select == .Mypage ? "person.fill" : "person")
                 }
                 .tag(Tab.Mypage)
         }
