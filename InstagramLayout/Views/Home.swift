@@ -11,10 +11,13 @@ struct Home: View {
     var body: some View {
         NavigationView {
             
-            VStack {
-                StoryView()
-                    .padding(.top, -30)
-                Spacer()
+            ScrollView {
+                VStack {
+                    StoryView()
+                        .padding(.top, -30)
+                    TimelineView()
+                }
+                
             }
             //                .navigationBarTitle(
             //                    Text("Rurustgram"),
@@ -23,14 +26,14 @@ struct Home: View {
             .navigationBarItems(
                 leading: Text("Rurustgram")
                     .font(.custom("Times-Roman", size: 44.0))
-                    .padding(.top, 10)
+                    .padding(.top, -10)
                 ,
                 trailing: HStack {
                     IconView(systemName: "plus.app")
                     IconView(systemName: "heart")
                     IconView(systemName: "plus.message")
                 }
-                .padding(.top, 20)
+//                .padding(.top, 20)
             )
         }
     }

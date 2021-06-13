@@ -8,28 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum Tab {
+        case Home
+        case Search
+        case Reels
+        case Shop
+        case Mypage
+    }
+    
     var body: some View {
         TabView {
             Home()
                 .tabItem {
                     IconView(systemName: "house")
                 }
+                .tag(Tab.Home)
+            
             IconView(systemName: "magnifyingglass")
                 .tabItem {
                     IconView(systemName: "magnifyingglass")
                 }
-            IconView(systemName: "plus.app")
+                .tag(Tab.Search)
+            
+            IconView(systemName: "film")
                 .tabItem {
-                    IconView(systemName: "plus.app")
+                    IconView(systemName: "film")
                 }
-            IconView(systemName: "heart")
+                .tag(Tab.Reels)
+            
+            IconView(systemName: "bag")
                 .tabItem {
-                    IconView(systemName: "heart")
+                    IconView(systemName: "bag")
                 }
+                .tag(Tab.Shop)
+            
             IconView(systemName: "person")
                 .tabItem {
                     IconView(systemName: "person")
                 }
+                .tag(Tab.Mypage)
         }
         .accentColor(.black)
     }

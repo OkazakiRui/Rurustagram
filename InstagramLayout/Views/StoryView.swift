@@ -21,39 +21,42 @@ struct StoryView: View {
     ]
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false, content: {
-            HStack {
-                ForEach(storys) { story in
-                    VStack {
-                        ZStack {
-                            Image(story.image)
-                                .resizable()
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.white, lineWidth: 10))
-                                .overlay(
-                                    Circle()
-                                        .stroke(LinearGradient(gradient: Gradient(colors: [.yellow, .red, .purple]), startPoint: .bottomLeading, endPoint: .topTrailing), lineWidth: 5))
-                                .frame(width: 75, height: 75)
-                                .clipShape(Circle())
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack {
+                    ForEach(storys) { story in
+                        VStack {
+                            ZStack {
+                                Image(story.image)
+                                    .resizable()
+                                    .overlay(
+                                        Circle()
+                                            .stroke(Color.white, lineWidth: 10))
+                                    .overlay(
+                                        Circle()
+                                            .stroke(LinearGradient(gradient: Gradient(colors: [.yellow, .red, .purple]), startPoint: .bottomLeading, endPoint: .topTrailing), lineWidth: 5))
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
+                            }
+                            Text(story.name)
+                                .font(.custom("String", size: 12.0))
+                                
+                                
+                                
                         }
-                        Text(story.name)
-                            .font(.custom("String", size: 12.0))
-                            
-                            
-                            
                     }
+                    .padding(.leading, 20)
                 }
-                .padding(.leading, 20)
-            }
-            .padding(.trailing, 20)
-        })
+                .padding(.trailing, 20)
+            })
+            Divider()
+        }
     }
 }
 
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
         StoryView()
-            .previewLayout(.fixed(width: 375, height: 90))
+            .previewLayout(.fixed(width: 375, height: 130))
     }
 }
